@@ -1,0 +1,35 @@
+type Query {
+    """Query a Line using ID"""
+    getLine(id: ID!): LineById
+    """Query a Page from a source (Default Source (1): Sri Guru Granth Sahib Ji)"""
+    getPage(sourceId: Int, pageNum: Int!): Page
+}
+
+type LineById implements Line & MetaInfo{
+    id: ID!
+    shabadid: ID!
+    gurmukhi: LineDefaults!
+    larivaar: LineDefaults!
+	translation: Translations!
+	transliteration: Transliterations!
+    source: LineSource!
+    writer: Writer!
+    raag: Raag!
+	lineNum: Int!
+	firstletters: LineDefaults!
+}
+
+type LineSource implements defaults & Source {
+    id: ID!
+    akhar: String!
+    unicode: String!
+    english: String!
+    pageName: Name!
+}
+
+type Page {
+    pageNum: Int!
+    source: LineSource!
+    count: Int!
+    page: [LineById!]!
+}

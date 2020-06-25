@@ -1,0 +1,50 @@
+type Query {
+    """
+    Get Today's Hukamnama from Sri Darbar Sahib
+    or provide a date to get from archive
+
+    Note: Hukam Archives start from 2002
+    """
+    getHukamnama(date: Date): Hukamnama
+}
+
+type Hukamnama {
+    date: HukamDate!
+    hukamnamainfo: HukamInfo!
+    hukamnama: [ShabadLine]!
+}
+
+type HukamDate {
+    gregorian: DateType!
+    nanakshahi: NanakshahiDate!
+}
+
+type DateType {
+    month: String!
+    monthno: Int!
+    date: Int!
+    year: Int!
+    day: String!
+}
+
+type NonEngDateType {
+    month: String!
+    monthno: String!
+    date: String!
+    year: String!
+    day: String!
+}
+
+type NanakshahiDate {
+    english: DateType!
+    punjabi: NonEngDateType!
+}
+
+type HukamInfo implements MetaInfo {
+    shabadid: ID!
+    pageNum: Int!
+    source: LineSource!
+    writer: Writer!
+    raag: Raag!
+    count: Int!
+}

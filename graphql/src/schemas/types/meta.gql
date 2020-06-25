@@ -1,0 +1,32 @@
+type Query {
+	"""Get list of all DB Sources"""
+    sources: [MetaSource!]!
+    """Get list of all writers"""
+    writers: [Writer!]!
+}
+
+type MetaSource implements defaults & Source {
+	id: ID!
+	akhar: String!
+	unicode: String!
+    english: String!
+    pageName: Name!
+    sections: [Section]!
+}
+
+type Section implements defaults {
+    id: ID!
+	akhar: String!
+	unicode: String!
+    english: String!
+    description: String
+    startPage: Int!
+    endPage: Int!
+}
+
+type Writer implements defaults {
+	id: ID!
+	akhar: String!
+	unicode: String!
+    english: String!
+}

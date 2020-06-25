@@ -1,0 +1,38 @@
+type Query {
+	"""Get list of all Banis"""
+	banis: [Banis!]!
+	"""Query a Bani using ID"""
+	getBani(id: Int!): BaniInfo
+}
+
+type Banis implements defaults {
+	id: ID!
+	akhar: String!
+	unicode: String!
+	english: String!
+}
+
+type BaniInfo implements defaults & MetaInfo {
+	id: ID!
+	akhar: String!
+	unicode: String!
+	english: String!
+	pageno: String!
+	source : LineSource!
+	writer: Writer!
+	raag: Raag!
+	count: Int!
+	lines: [BaniLines]!
+}
+
+type BaniLines implements Line {
+	id: ID!
+	shabadid: ID!
+	gurmukhi: LineDefaults!
+	larivaar: LineDefaults!
+	translation: Translations!
+	transliteration: Transliterations!
+	pageNum: Int!
+	lineNum: Int!
+	firstletters: LineDefaults!
+}

@@ -1,0 +1,31 @@
+type Query {
+    """Query a Shabad using ID or get a random shabad"""
+    getShabad(id: ID): Shabad
+}
+
+type Shabad implements MetaInfo {
+    shabadid: ID!
+    pageno: Int!
+    source: LineSource!
+    writer: Writer!
+    raag: Raag!
+    navigation: Navigation!
+    count: Int!
+    lines: [ShabadLine]!
+}
+
+type Navigation {
+    previousId: ID
+    nextId: ID
+}
+
+type ShabadLine implements Line {
+    id: ID!
+	gurmukhi: LineDefaults!
+	larivaar: LineDefaults!
+	translation: Translations!
+	transliteration: Transliterations!
+	lineNum: Int!
+	firstletters: LineDefaults!
+}
+

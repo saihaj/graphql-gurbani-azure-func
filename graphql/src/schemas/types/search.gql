@@ -1,0 +1,71 @@
+type Query {
+    """Run a search query"""
+    search(searchInputs: SearchInputs): SearchResults
+}
+
+input SearchInputs {
+    "Search input"
+    searchQuery: String!
+
+    """
+    Available options:
+
+    0 - First Letter Start (Gurmukhi) (DEFAULT)
+
+    1 - First Letter Anywhere (Gurmukhi)
+
+    2 - Full Word/Line (Gurmukhi)
+
+    4 - Search All Words (Gurmukhi)
+
+    6 - Search Any Words (Gurmukhi)
+    """
+    searchType: Int
+
+    "Use Sources Query to get list of all availble sources. Defualt is all."
+    sourceId: Int
+
+    "Writer ID to retrieve all lines from."
+    writerId: Int
+
+    "Section ID to retrieve all lines from."
+    sectionId: Int
+
+    "The page in the source to retrieve all lines from."
+    pageNum: Int
+
+    "Limit result to a certain number of lines. Default: 20. Max: 100"
+    limit: Int
+}
+
+type SearchResults {
+    inputvalues: InputValues!
+    count: Int
+    shabads: [ResultShabads]
+}
+
+type InputValues {
+    searchvalue: String!
+    searchtype: Int!
+    source: Int!
+    writer: Int!
+    raag: Int!
+    page: Int!
+    results: Int!
+    skip: Int!
+}
+
+type ResultShabads implements MetaInfo & Line {
+	id: ID!
+    shabadid: ID!
+	gurmukhi: LineDefaults!
+	larivaar: LineDefaults!
+	translation: Translations!
+	transliteration: Transliterations!
+    source: LineSource!
+    writer: Writer!
+    raag: Raag!
+	pageNum: Int!
+    lineNum: Int!
+	firstletters: LineDefaults!
+}

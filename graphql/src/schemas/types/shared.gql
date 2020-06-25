@@ -1,0 +1,66 @@
+interface defaults { 
+	id: ID!
+	akhar: String
+	unicode: String
+    english: String
+}
+
+type Name { 
+	akhar: String
+	unicode: String
+	english: String
+}
+
+type LineDefaults {
+	akhar: String
+	unicode:String
+}
+
+type TranslitLine { 
+	text: String
+	larivaar: String
+}
+
+type Translations { 
+	english: String
+	punjabi: LineDefaults!
+	spanish: String
+}
+
+type Transliterations { 
+	english: TranslitLine!
+	devanagari: TranslitLine!
+	urdu: TranslitLine!
+}
+
+type Raag implements defaults {
+	akhar: String!
+	unicode: String!
+	english: String!
+	id: ID!
+	startang: String!
+	endang: String!
+	raagwithpage: String!
+}
+
+interface Line {
+	id: ID!
+	gurmukhi: LineDefaults!
+	larivaar: LineDefaults!
+	translation: Translations!
+	transliteration: Transliterations!
+	lineNum: Int!
+	firstletters: LineDefaults!
+}
+
+interface Source {
+    pageName: Name!
+}
+
+scalar Date
+
+interface MetaInfo {
+    source: LineSource!
+    writer: Writer!
+    raag: Raag!
+}
