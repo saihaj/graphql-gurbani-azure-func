@@ -4,6 +4,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/GurbaniNow/api)](https://github.com/GurbaniNow/api/blob/master/LICENSE)
 [![Slack](https://img.shields.io/badge/Slack-join%20the%20conversation-B649AB.svg)](https://chat.shabados.com)
+[![CodeFactor](https://www.codefactor.io/repository/github/saihaj/graphql-gurbani-azure-func/badge)](https://www.codefactor.io/repository/github/saihaj/graphql-gurbani-azure-func)
 <img src="https://raw.githubusercontent.com/Azure/azure-functions-cli/master/src/Azure.Functions.Cli/npm/assets/azure-functions-logo-color-raster.png" width="30">
 
 > Note: I just made this for fun. If you are planning to use for your app I highly recommend you to use GurbaniNow RESTful API located at [api.gurbaninow.com](https://api.gurbaninow.com) instead of this because this is DEVELOPED FOR EXPLORATION PURPOSES ONLY.
