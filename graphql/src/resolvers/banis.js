@@ -1,14 +1,18 @@
 import { getBanis, getBaniLines } from '../lib/banis'
 
 const BANIS = {
-  banis: () => getBanis(),
-  getBani: async ( _, { id } ) => {
-    const { baniinfo, bani } = await getBaniLines( id )
+  Query: {
+    banis: () => getBanis(),
 
-    return {
-      ...baniinfo,
-      lines: bani.map( ( { line } ) => line ),
-    }
+    getBani: async ( _, { id } ) => {
+      const { baniinfo, bani } = await getBaniLines( id )
+
+      return {
+        ...baniinfo,
+        lines: bani.map( ( { line } ) => line ),
+      }
+    },
+
   },
 }
 

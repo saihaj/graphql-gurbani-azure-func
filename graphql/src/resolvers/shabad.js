@@ -2,19 +2,21 @@ import getShabad from '../lib/shabad'
 import getRandomShabad from '../lib/randomShabad'
 
 const SHABAD = {
-  getShabad: async ( _, { id } ) => {
-    const shabadId = id || await getRandomShabad()
-    const { shabadinfo, shabad } = await getShabad( shabadId )
-    const { navigation: { previous, next } } = shabadinfo
+  Query: {
+    getShabad: async ( _, { id } ) => {
+      const shabadId = id || await getRandomShabad()
+      const { shabadinfo, shabad } = await getShabad( shabadId )
+      const { navigation: { previous, next } } = shabadinfo
 
-    return {
-      ...shabadinfo,
-      navigation: {
-        previousId: previous.id,
-        nextId: next.id,
-      },
-      lines: shabad.map( ( { line } ) => line ),
-    }
+      return {
+        ...shabadinfo,
+        navigation: {
+          previousId: previous.id,
+          nextId: next.id,
+        },
+        lines: shabad.map( ( { line } ) => line ),
+      }
+    },
   },
 }
 
